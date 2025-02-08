@@ -8,6 +8,8 @@ const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
 
+const blogRoute = require("./routes/blog");
+
 const app = express();
 const PORT = 8000;
 
@@ -35,6 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
+app.use("/blog", blogRoute);
 
 app.listen(PORT, () => {
   console.log(`Server started at port: ${PORT}`);
