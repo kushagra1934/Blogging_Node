@@ -1,7 +1,6 @@
 const JWT = require("jsonwebtoken");
-const { create } = require("../models/user");
 
-const secret = "Kushagra@Saxena1303";
+const secret = "$uperMan@123";
 
 function createTokenForUser(user) {
   const payload = {
@@ -10,7 +9,6 @@ function createTokenForUser(user) {
     profileImageURL: user.profileImageURL,
     role: user.role,
   };
-
   const token = JWT.sign(payload, secret);
   return token;
 }

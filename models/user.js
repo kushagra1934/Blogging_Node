@@ -35,6 +35,7 @@ const userSchema = new Schema(
 
 userSchema.pre("save", function (next) {
   const user = this;
+
   if (!user.isModified("password")) return;
 
   const salt = randomBytes(16).toString();
@@ -62,7 +63,7 @@ userSchema.static(
       .digest("hex");
 
     if (hashedPassword !== userProvidedHash)
-      throw new Error("Wrong Password! ");
+      throw new Error("Incorrect Password");
 
     const token = createTokenForUser(user);
     return token;
